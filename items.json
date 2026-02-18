@@ -1,0 +1,24 @@
+{
+    "title": "Quince & Canvas",
+      "subtitle": "Current wall — Month of Ches",
+        "note": "These are the ones that worked.",
+          "items": [
+              {
+                    "name": "Angler’s Wand",
+                          "rarity": "Uncommon",
+                                "price": "250 gp",
+                                      "image": "",
+                                            "short": "Works better near rivers.",
+                                                  "details": "Once per day, you can cast Speak with Animals, but only on fish."
+                                                      },
+                                                          {
+                                                                "name": "Cup of Bad Tea",
+                                                                      "rarity": "Uncommon",
+                                                                            "price": "75 gp",
+                                                                                  "image": "",
+                                                                                        "short": "Always lukewarm. Always there.",
+                                                                                              "details": "If you set this cup down, it will appear within 10 feet of you during your next short rest."
+                                                                                                  }
+                                                                                                    ]
+                                                                                                    }
+}

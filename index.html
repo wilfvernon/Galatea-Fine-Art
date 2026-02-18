@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Quince & Canvas</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+    background:#f6f3ee;
+      color:#2b2b2b;
+        font-family: Inter, system-ui;
+        }
+
+        .wrap {
+          max-width:720px;
+            margin:0 auto;
+              padding:60px 20px;
+              }
+
+              h1 {
+                font-family: Libre Baskerville, serif;
+                  margin:0;
+                  }
+
+                  .subtitle {
+                    margin-top:6px;
+                      opacity:.7;
+                      }
+
+                      .note {
+                        margin:30px 0 60px;
+                          font-style:italic;
+                          }
+
+                          .item {
+                            margin-bottom:80px;
+                            }
+
+                            .item img {
+                              max-width:100%;
+                                display:block;
+                                  margin-bottom:12px;
+                                  }
+
+                                  .name {
+                                    font-family: Libre Baskerville, serif;
+                                      font-size:22px;
+                                        margin:0;
+                                        }
+
+                                        .meta {
+                                          opacity:.7;
+                                            font-size:14px;
+                                              margin-top:4px;
+                                              }
+
+                                              .short {
+                                                margin:10px 0;
+                                                }
+
+                                                details {
+                                                  margin-top:10px;
+                                                  }
+
+                                                  hr {
+                                                    border:none;
+                                                      border-top:1px solid #ddd;
+                                                        margin:60px 0;
+                                                        }
+                                                        </style>
+                                                        </head>
+
+                                                        <body>
+                                                        <div class="wrap">
+                                                          <h1 id="title"></h1>
+                                                            <div class="subtitle" id="subtitle"></div>
+                                                              <div class="note" id="note"></div>
+
+                                                                <div id="wall"></div>
+                                                                </div>
+
+                                                                <script>
+                                                                fetch("items.json").then(r=>r.json()).then(data=>{
+                                                                  title.textContent = data.title;
+                                                                    subtitle.textContent = data.subtitle;
+                                                                      note.textContent = data.note;
+
+                                                                        wall.innerHTML = data.items.map(i=>`
+                                                                            <div class="item">
+                                                                                  ${i.image ? `<img src="${i.image}">` : ""}
+                                                                                        <div class="name">${i.name}</div>
+                                                                                              <div class="meta">${i.rarity} · ${i.price}</div>
+                                                                                                    <div class="short">${i.short}</div>
+                                                                                                          <details>
+                                                                                                                  <summary>Details</summary>
+                                                                                                                          <p>${i.details}</p>
+                                                                                                                                </details>
+                                                                                                                                      <hr>
+                                                                                                                                          </div>
+                                                                                                                                            `).join("");
+                                                                                                                                            });
+                                                                                                                                            </script>
+                                                                                                                                            </body>
+                                                                                                                                            </html>
