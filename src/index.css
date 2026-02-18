@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=EB+Garamond:wght@400;700&family=Space+Mono&family=Poppins:wght@400;500;700&display=swap');
 
+:root {
+  --color-bg-main: #8aa4ba;
+  --color-text-main: #1a1a1a;
+  --color-ink: #2c3e50;
+  --color-subtitle: #f5f7fa;
+  --color-note: #f6f4ef;
+  --color-surface: #f6f4ef;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -11,8 +20,8 @@ html, body, #root {
 
 body {
   margin: 0;
-  background: #ffffff;
-  color: #1a1a1a;
+  background: var(--color-bg-main);
+  color: var(--color-text-main);
   font-family: 'EB Garamond', serif;
   letter-spacing: 0.3px;
   min-height: 100vh;
@@ -21,12 +30,13 @@ body {
 #root {
   width: 100%;
   min-height: 100vh;
+  background: var(--color-bg-main);
 }
 
 .wrap {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 80px 40px;
+  padding: clamp(2.5rem, 5vw, 5rem) clamp(1rem, 4vw, 2.5rem);
   position: relative;
 }
 
@@ -43,51 +53,58 @@ body {
 
 h1 {
   font-family: 'Playfair Display', serif;
-  margin: 0 0 4px 0;
+  margin: 0 0 0.25rem 0;
   font-size: 64px;
   font-weight: 900;
   letter-spacing: -2px;
-  color: #2c3e50;
+  color: var(--color-ink);
   text-transform: uppercase;
   word-spacing: 100vw;
 }
 
 .subtitle {
-  margin-top: 12px;
-  opacity: 0.7;
-  margin-bottom: 16px;
+  margin-top: 3rem;
+  opacity: 1;
+  margin-bottom: 1rem;
   font-family: 'Space Mono', monospace;
   font-size: 12px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: #4a5f7f;
+  color: var(--color-subtitle);
 }
 
 .note {
-  margin: 0 0 80px 0;
+  margin: 0;
   font-style: italic;
-  opacity: 0.6;
+  opacity: 1;
   font-size: 14px;
-  color: #4a4a4a;
+  color: var(--color-note);
   max-width: 400px;
-  border-left: 3px solid #2c3e50;
-  padding-left: 16px;
 }
 
 /* Gallery Grid */
 .gallery {
+  background: var(--color-bg-main);
+  border-radius: 24px;
+  padding: 2.5rem 1.5rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 40px;
-  margin-bottom: 80px;
+  margin-bottom: 5rem;
 }
 
 .painting {
+  appearance: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  padding: 0;
   cursor: pointer;
   position: relative;
   aspect-ratio: 1;
-  background: #ffffff;
-  border: 12px solid #2c3e50;
+  background: var(--color-surface);
+  border: 12px solid var(--color-ink);
   transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
   display: flex;
   align-items: center;
@@ -109,7 +126,7 @@ h1 {
 .painting:hover {
   transform: scale(1.02) rotateZ(0.5deg);
   box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3), 0 20px 60px rgba(44, 62, 80, 0.2);
-  border-color: #2c3e50;
+  border-color: var(--color-ink);
 }
 
 .painting:hover::after {
@@ -166,8 +183,8 @@ h1 {
 }
 
 .modal-content {
-  background: #ffffff;
-  border: 2px solid #2c3e50;
+  background: var(--color-surface);
+  border: 2px solid var(--color-ink);
   border-radius: 0px;
   max-width: 1000px;
   width: 90%;
@@ -176,7 +193,7 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 50px;
-  padding: 50px;
+  padding: clamp(1.75rem, 4vw, 3.125rem);
   position: relative;
   animation: slideUp 0.4s cubic-bezier(0.23, 1, 0.320, 1);
   align-items: center;
@@ -207,8 +224,8 @@ h1 {
   aspect-ratio: 1;
   object-fit: contain;
   border-radius: 0px;
-  background: #ffffff;
-  border: 12px solid #2c3e50;
+  background: var(--color-surface);
+  border: 12px solid var(--color-ink);
   box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
   position: relative;
   z-index: 1;
@@ -218,7 +235,7 @@ h1 {
   align-self: start;
   overflow-y: auto;
   max-height: calc(90vh - 100px);
-  padding-right: 24px;
+  padding-right: 1.5rem;
   position: relative;
   z-index: 1;
 }
@@ -227,16 +244,16 @@ h1 {
   font-family: 'Playfair Display', serif;
   font-size: 42px;
   font-weight: 700;
-  margin: 0 0 16px 0;
+  margin: 0 0 1rem 0;
   letter-spacing: -1px;
-  color: #2c3e50;
+  color: var(--color-ink);
 }
 
 .modal-type {
   font-family: 'Space Mono', monospace;
   font-size: 11px;
   opacity: 0.7;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #4a5f7f;
@@ -244,9 +261,9 @@ h1 {
 
 .modal-attunement {
   background: rgba(44, 62, 80, 0.08);
-  padding: 16px 20px;
+  padding: 1rem 1.25rem;
   border-left: 3px solid #2c3e50;
-  margin-bottom: 28px;
+  margin-bottom: 1.75rem;
   font-size: 13px;
   border-radius: 0px;
   line-height: 1.6;
@@ -257,12 +274,12 @@ h1 {
   line-height: 1.8;
   white-space: pre-wrap;
   font-size: 14px;
-  color: #1a1a1a;
+  color: var(--color-text-main);
 }
 
 .modal-description strong {
   font-weight: 700;
-  color: #2c3e50;
+  color: var(--color-ink);
   font-family: 'EB Garamond', serif;
 }
 
@@ -274,9 +291,9 @@ h1 {
   border: none;
   font-size: 32px;
   cursor: pointer;
-  color: #2c3e50;
+  color: var(--color-ink);
   transition: all 0.3s;
-  padding: 4px;
+  padding: 0.25rem;
   width: 40px;
   height: 40px;
   display: flex;
@@ -287,7 +304,7 @@ h1 {
 }
 
 .modal-close:hover {
-  color: #2c3e50;
+  color: var(--color-ink);
   opacity: 1;
   transform: rotate(90deg);
 }
@@ -313,7 +330,7 @@ h1 {
 /* Mobile */
 @media (max-width: 768px) {
   .wrap {
-    padding: 60px 24px;
+    padding: 3.75rem 1.5rem;
   }
 
   h1 {
@@ -322,15 +339,18 @@ h1 {
   }
 
   .gallery {
+  background: var(--color-bg-main);
+  border-radius: 24px;
+  padding: 2.5rem 1.5rem;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 24px;
-    margin-bottom: 60px;
+    margin-bottom: 3.75rem;
   }
 
   .modal-content {
     grid-template-columns: 1fr;
     gap: 32px;
-    padding: 32px 24px;
+    padding: 2rem 1.5rem;
     width: 95%;
   }
 

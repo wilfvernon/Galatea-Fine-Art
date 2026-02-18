@@ -1,47 +1,35 @@
 # Galatea Fine Art
 
-A curated gallery website for showcasing fine art pieces. Built with React + Vite.
+A curated gallery site built with React and Vite.
+
+## Scripts
+
+- npm run dev — start development server
+- npm run build — create production build
+- npm run preview — preview production build locally
+- npm run lint — run ESLint checks
+- npm run lint:fix — auto-fix lint issues where possible
 
 ## Project Structure
 
 ```
 src/
-├── main.jsx              # React entry point
-├── App.jsx              # Main app component
-├── index.css            # Global styles
+├── main2.jsx
+├── AppMain.jsx
+├── index.css
+├── pinned.css
 └── components/
-    ├── Header.jsx       # Page header with title and month
-    ├── Gallery.jsx      # Gallery grid layout
-    └── Modal.jsx        # Item detail modal
+    ├── Gallery.jsx
+    ├── GalleryWithMeta.jsx
+    ├── HeaderPinned.jsx
+    └── Modal.jsx
 public/
-└── items.json           # Gallery data
-index.html              # HTML template
-package.json            # Dependencies
-vite.config.js          # Vite configuration
+└── items.json
 ```
 
-## Getting Started
+## Data Format
 
-### Install dependencies
-```bash
-npm install
-```
-
-### Development server
-```bash
-npm run dev
-```
-
-Server runs at `http://localhost:5173`
-
-### Build for production
-```bash
-npm run build
-```
-
-## Adding Items
-
-Edit `public/items.json` to add or modify gallery items. Each item should have:
+Edit public/items.json to add or modify gallery items:
 
 ```json
 {
@@ -54,17 +42,16 @@ Edit `public/items.json` to add or modify gallery items. Each item should have:
 }
 ```
 
-## Color Palette
+## Styling Notes
 
-- **#f8f2dc** - Cream background
-- **#2d2416** - Dark text
-- **#9e6240** - Warm brown
-- **#81adc8** - Muted blue
-- **#6b9e7f** - Muted sage green
+- Shared color tokens are defined in :root in src/index.css.
+- Spacing uses scalable units (rem and clamp) for responsive behavior.
+- Header-specific pinned layout styles are in src/pinned.css.
 
-## Styling
+## Current Best-Practice Baseline
 
-All styles are in `src/index.css`. The design uses:
-- Playfair Display for headings
-- EB Garamond for body text
-- Space Mono for metadata
+- Accessibility: gallery tiles are keyboard-accessible button elements with labels.
+- Safety: modal description rendering avoids dangerous HTML injection.
+- UX: modal closes with Escape, backdrop click, and locks page scroll while open.
+- Performance: gallery images use lazy loading and async decoding.
+- Quality: ESLint is configured for React Hooks and Vite-friendly component exports.

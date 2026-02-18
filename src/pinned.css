@@ -1,21 +1,32 @@
 /* Layout: make space for pinned header */
-.wrap { padding-top: 190px; }
+.wrap {
+  padding-top: clamp(7.5rem, 16vw, 10rem);
+  background: var(--color-bg-main);
+  min-height: 100vh;
+}
 
-/* Pinned title layout */
+/* Pinned header */
 .pinned-title {
   position: fixed;
-  top: 24px;
-  left: 220px; /* leave room for artist image */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background: var(--color-surface);
+  box-shadow: 0 2px 16px rgba(44,62,80,0.08);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+}
+
+.pinned-inner {
   display: flex;
   align-items: center;
-  gap: 18px;
-  z-index: 200;
-  pointer-events: none;
-  opacity: 0.92;
+  gap: 12px;
+  padding: 1rem clamp(1rem, 3vw, 2rem) 0 clamp(5rem, 12vw, 8.125rem);
 }
 
 .artist-inline {
-  width: 80px;
+  width: 90px;
   height: auto;
   display: block;
 }
@@ -25,28 +36,9 @@
   font-size: 36px;
 }
 
-/* Artist image placement */
-.artist-pinned {
-  position: fixed;
-  top: 24px;
-  left: 40px;
-  width: 160px;
-  height: auto;
-  z-index: 199;
-  pointer-events: none;
-  opacity: 1;
-}
-
-.artist-pinned img { width: 100%; height: auto; display: block; }
-
-/* Full-width divider under pinned title */
 .pinned-divider {
-  position: fixed;
-  top: 172px;
-  left: 0;
-  right: 0;
+  width: 100%;
   height: 2px;
-  background: #2c3e50;
-  z-index: 190;
-  pointer-events: none;
+  background: var(--color-ink);
+  margin: 0;
 }
