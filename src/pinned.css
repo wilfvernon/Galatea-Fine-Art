@@ -1,0 +1,52 @@
+/* Layout: make space for pinned header */
+.wrap { padding-top: 190px; }
+
+/* Pinned title layout */
+.pinned-title {
+  position: fixed;
+  top: 24px;
+  left: 220px; /* leave room for artist image */
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0.92;
+}
+
+.artist-inline {
+  width: 80px;
+  height: auto;
+  display: block;
+}
+
+.pinned-title h1 {
+  margin: 0;
+  font-size: 36px;
+}
+
+/* Artist image placement */
+.artist-pinned {
+  position: fixed;
+  top: 24px;
+  left: 40px;
+  width: 160px;
+  height: auto;
+  z-index: 199;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.artist-pinned img { width: 100%; height: auto; display: block; }
+
+/* Full-width divider under pinned title */
+.pinned-divider {
+  position: fixed;
+  top: 172px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #2c3e50;
+  z-index: 190;
+  pointer-events: none;
+}
