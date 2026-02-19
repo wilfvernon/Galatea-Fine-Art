@@ -1,0 +1,257 @@
+/* Galatea Fine Art - Light Gallery Aesthetic (distinct from Candlekeep) */
+.galatea-container {
+  padding: clamp(1.5rem, 4vw, 3rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  background: #f6f3ee;
+  min-height: 100vh;
+}
+
+.galatea-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.galatea-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(32px, 5vw, 42px);
+  color: #2c1810;
+  margin: 0 0 8px 0;
+  letter-spacing: 1px;
+}
+
+.galatea-subtitle {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(14px, 2.5vw, 16px);
+  color: #8b5a3c;
+  margin: 0;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+.gallery-loading,
+.gallery-error {
+  padding: 40px;
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+}
+
+/* Gallery Grid */
+.gallery {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.painting {
+  appearance: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  aspect-ratio: 1;
+  background: white;
+  border: 8px solid #2c3e50;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.painting:hover {
+  transform: scale(1.02) translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.painting img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: filter 0.3s;
+}
+
+.painting:hover img {
+  filter: brightness(1.05);
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  animation: fadeIn 0.3s;
+  backdrop-filter: blur(2px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  border: 2px solid #2c3e50;
+  border-radius: 8px;
+  max-width: 1000px;
+  width: 90%;
+  max-height: 90vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  padding: clamp(1.75rem, 4vw, 3.125rem);
+  position: relative;
+  animation: slideUp 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  align-items: center;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 4px;
+  background: white;
+  border: 8px solid #2c3e50;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.modal-details {
+  align-self: start;
+  overflow-y: auto;
+  max-height: calc(90vh - 100px);
+  padding-right: 1.5rem;
+}
+
+.modal-details h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  color: #2c3e50;
+}
+
+.modal-type {
+  font-family: Inter, system-ui;
+  font-size: 12px;
+  opacity: 0.7;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #4a5f7f;
+  font-style: italic;
+}
+
+.modal-attunement {
+  background: rgba(44, 62, 80, 0.08);
+  padding: 1rem 1.25rem;
+  border-left: 3px solid #2c3e50;
+  margin-bottom: 1.75rem;
+  font-size: 14px;
+  border-radius: 4px;
+  line-height: 1.6;
+  color: #3a3a3a;
+}
+
+.modal-description {
+  line-height: 1.8;
+  white-space: pre-wrap;
+  font-size: 15px;
+  color: #2b2b2b;
+}
+
+.modal-description strong {
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.modal-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  color: #2c3e50;
+  transition: all 0.3s;
+  padding: 0.25rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  opacity: 0.7;
+}
+
+.modal-close:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+    padding: 1.5rem 1rem;
+  }
+
+  .modal-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 2rem 1.5rem;
+    width: 95%;
+  }
+
+  .modal-details h2 {
+    font-size: 24px;
+  }
+
+  .modal-details {
+    padding-right: 0;
+  }
+}
+

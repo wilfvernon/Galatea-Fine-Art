@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "name": "Angler's Wand",
+      "type": "Wand",
+      "rarity": "uncommon",
+      "attunement": null,
+      "image": "https://firebasestorage.googleapis.com/v0/b/griffons-saddlebag.appspot.com/o/images%2F_STH2PAGX%2Fmedium.png?alt=media&token=b01ff914-87b4-4e7f-a7e3-f2adc0d7b1ff",
+      "description": "While holding this wand, you can use an action to speak its command word to transform it into a fishing rod, complete with line and tackle. It remains in this form until you use an action to speak its command word again to transform it back into the wand.\n\nThe wand has 7 charges for the following properties. The number of charges remaining are represented by the amount of spectral fish that swim around you while holding it.\n\n**Fish Slap.** While holding the wand, you can use an action to expend 1 of the wand's charges to send one of the spectral fish toward a target that you can see within 60 feet of you. The fish then grows in size, swims through the air to the target, and smacks the target with its oversized tail or fins. Make a ranged spell attack against the target, using an attack bonus of +5. On a hit, the target takes 1d12 + 3 force damage.\n\n**Reel In.** While holding the wand, you can use an action to point it at a target that you can see within 60 feet of you and expend 1 of its charges. The target must succeed on a DC 13 Strength saving throw. On a failed save, it's pulled up to 30 feet toward you and is considered hooked for 1 minute or until the target is more than 120 feet away from you."
+    },
+    {
+      "name": "Bangle of Sun and Moon",
+      "type": "Wondrous Item",
+      "rarity": "uncommon",
+      "attunement": "(requires attunement)",
+      "image": "https://firebasestorage.googleapis.com/v0/b/griffons-saddlebag.appspot.com/o/images%2FRwvg5WKee%2Fmedium.png?alt=media&token=04e476ba-7677-4a72-8aaa-c5162cbce272",
+      "description": "This bangle features a personified sun and moon, transitioning from gold to silver midway through the band. Three small diamonds mark their eyes. While wearing the bangle, you always know how long it is until sunrise, sunset, midday, and midnight.\n\nThe bangle has 3 charges and regains 1d3 expended charges daily at dawn. While wearing it, you can expend 2 of the bangle's charges to cast the **daylight** spell from it. Alternatively, you can expend 1 or more of the bangle's charges to cast the **moonbeam** spell from it (save DC 13). For 1 charge, you cast the 2nd-level version of the spell. You can increase the spell slot level by one for each additional charge you expend. When you expend 2 or more charges to cast moonbeam in this way, you can choose whether the spell's damage type is cold, fire, or radiant.\n\nIf you have 11 or more levels in the druid class and are wearing this bangle, you can expend 3 charges from the bangle to cast the **sunbeam** spell from it (save DC 13). When you do, there is a permanent and cumulative 25 percent chance that the bangle is destroyed when the spell ends."
+    }
+  ]
+}
