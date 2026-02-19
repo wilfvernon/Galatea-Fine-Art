@@ -80,6 +80,11 @@
   color: #2c1810;
 }
 
+.sign-out-btn:focus-visible {
+  outline: 2px solid #d4a574;
+  outline-offset: 2px;
+}
+
 .app-main {
   flex: 1;
   overflow-y: auto;
@@ -125,6 +130,11 @@
 .nav-item.active {
   color: #d4a574;
   text-shadow: 0 0 8px rgba(255, 140, 0, 0.5);
+}
+
+.nav-item:focus-visible {
+  outline: 2px solid rgba(212, 165, 116, 0.85);
+  outline-offset: 2px;
 }
 
 .nav-item.active .nav-icon {
