@@ -1,5 +1,3 @@
-import './Bookshelf.css';
-
 function Bookshelf() {
   return (
     <div className="page-container">

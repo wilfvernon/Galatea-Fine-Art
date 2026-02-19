@@ -1,5 +1,3 @@
-import './CharacterSheet.css';
-
 function CharacterSheet() {
   return (
     <div className="page-container">

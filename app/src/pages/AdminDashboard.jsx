@@ -1,5 +1,3 @@
-import './AdminDashboard.css';
-
 function AdminDashboard() {
   return (
     <div className="page-container">

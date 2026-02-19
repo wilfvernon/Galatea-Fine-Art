@@ -1,5 +1,3 @@
-import './Notes.css';
-
 function Notes() {
   return (
     <div className="page-container">
