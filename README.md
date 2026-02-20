@@ -1,50 +1,63 @@
-# D&D Character Sheet Feature Specification
+# Character Sheet Feature Specification
 
 ## Overview
-The D&D character sheet feature aims to provide players with a comprehensive tool to manage their characters, track progress, and enhance gameplay experience.
+This document outlines the specifications for a detailed character sheet feature for the Galatea Fine Art application.
 
-## Features
-1. **Character Creation**  
-   - Input fields for character name, race, class, level, and background.
-   - Ability to add custom attributes and skills.
+## Database Schema
+The character sheet feature will involve the following tables:
 
-2. **Character Statistics**  
-   - Display stats such as Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma.
-   - Track hit points, armor class, and movement speed.
+### Users Table
+- **user_id** (Primary Key): Unique identifier for each user.
+- **username**: Name of the user.
+- **password_hash**: Hash of the user's password.
 
-3. **Inventory Management**  
-   - Add, edit, and remove items.
-   - Track weights and effects of items.
+### Characters Table
+- **character_id** (Primary Key): Unique identifier for each character.
+- **user_id** (Foreign Key): Reference to the user who owns the character.
+- **name**: Character's name.
+- **age**: Character's age.
+- **description**: Brief description of the character.
+- **created_at**: Timestamp when the character was created.
 
-4. **Spell Management**  
-   - List spells known and spell slots available.
-   - Detailed description and effects for each spell.
+### Attributes Table
+- **attribute_id** (Primary Key): Unique identifier for each attribute.
+- **character_id** (Foreign Key): Reference to the character.
+- **strength**: Strength value of the character.
+- **agility**: Agility value of the character.
+- **intelligence**: Intelligence value of the character.
 
-5. **Level Up Mechanic**  
-   - Provide options for leveling up, including increasing stats and gaining new skills/spells.
+### Inventory Table
+- **item_id** (Primary Key): Unique identifier for each item.
+- **character_id** (Foreign Key): Reference to the character.
+- **item_name**: Name of the item.
+- **quantity**: Quantity of the item.
 
-6. **Save & Load Functionality**  
-   - Save character sheets and load them for future sessions.
+## Architecture Decisions
+- **Microservices Architecture**: To enhance scalability, the character sheet will utilize microservices to separate user authentication, character management, and inventory handling.
+- **RESTful API**: The frontend will communicate with the backend services via RESTful APIs for efficient data exchange.
 
-7. **User Interface**  
-   - Friendly and intuitive UI design for ease of use.
-   
-## Development Roadmap
-### Q1 2026
-- Complete feature specification and gather feedback from initial users.
-- Start building the character creation module.
+## Data Flow
+1. **User Registration**: Users will register through the frontend, which sends a request to the authentication service.
+2. **Character Creation**: After logging in, users can create a character, which sends data to the character management service.
+3. **Attribute Management**: Users can update character attributes through the character management service.
+4. **Inventory Updates**: Items will be added or removed from a character's inventory via the inventory handling service.
 
-### Q2 2026
-- Implement character statistics and inventory management.
-- Conduct user testing and refine usability.
+## Implementation Phases
+1. **Phase 1: Design**  
+   - Create detailed wireframes and mockups of the character sheet interface.
+   - Finalize the database schema.
 
-### Q3 2026
-- Develop the spell management section.
-- Begin implementing save and load functionality.
+2. **Phase 2: Development**  
+   - Implement backend services for user authentication, character management, and inventory handling.
+   - Develop the frontend interface for users to interact with character sheets.
 
-### Q4 2026
-- Finalize testing for all modules and prepare for launch.
-- Launch the D&D Character Sheet feature publicly.
+3. **Phase 3: Testing**  
+   - Conduct unit testing and integration testing.
+   - Perform user acceptance testing (UAT) to gather feedback.
+
+4. **Phase 4: Deployment**  
+   - Deploy the feature to the production environment.
+   - Monitor and maintain the feature post-launch.
 
 ## Conclusion
-This feature will significantly enhance the D&D gameplay by providing players with a robust tool to manage their characters effectively. Feedback during development will be crucial to ensure it meets user needs.
+This specification provides a detailed outline for developing a character sheet feature. Proper implementation will enhance user engagement by allowing players to manage their characters effectively.
