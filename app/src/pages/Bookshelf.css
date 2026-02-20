@@ -233,7 +233,7 @@
   flex-shrink: 0;
 }
 
-/* Fully restored original parchment styling for pagedjs pages (with all radial and crisscross gradients) */
+/* Parchment styling for pagedjs pages */
 .reader-paged-output .pagedjs_sheet {
   position: relative;
   background:
@@ -262,17 +262,28 @@
     ),
     radial-gradient(circle at 12% 18%, rgba(110, 86, 54, 0.16) 0px, rgba(110, 86, 54, 0) 34%),
     radial-gradient(circle at 78% 32%, rgba(110, 86, 54, 0.14) 0px, rgba(110, 86, 54, 0) 38%),
-    radial-gradient(circle at 30% 74%, rgba(110, 86, 54, 0.12) 0px, rgba(110, 86, 54, 0) 42%);
-  border: 1px solid rgba(101, 70, 34, 0.35);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 0 35px rgba(90, 61, 28, 0.2);
+    radial-gradient(circle at 30% 74%, rgba(110, 86, 54, 0.12) 0px, rgba(110, 86, 54, 0) 42%) !important;
+  border: 1px solid rgba(101, 70, 34, 0.35) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 0 35px rgba(90, 61, 28, 0.2) !important;
 }
 
 .reader-paged-output .pagedjs_sheet::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #f7f3e7 0%, #f3e9d7 100%);
-  opacity: 1;
+  background-image:
+    radial-gradient(ellipse 240px 180px at 14% 18%, rgba(110, 86, 54, 0.18) 0px, rgba(110, 86, 54, 0) 100%),
+    radial-gradient(ellipse 180px 160px at 68% 12%, rgba(138, 108, 68, 0.14) 0px, rgba(138, 108, 68, 0) 100%),
+    radial-gradient(ellipse 210px 170px at 32% 56%, rgba(98, 76, 48, 0.16) 0px, rgba(98, 76, 48, 0) 100%),
+    radial-gradient(ellipse 200px 190px at 82% 48%, rgba(126, 98, 62, 0.12) 0px, rgba(126, 98, 62, 0) 100%),
+    radial-gradient(ellipse 190px 165px at 48% 88%, rgba(102, 80, 50, 0.15) 0px, rgba(102, 80, 50, 0) 100%),
+    radial-gradient(ellipse 170px 155px at 22% 76%, rgba(118, 92, 58, 0.13) 0px, rgba(118, 92, 58, 0) 100%),
+    radial-gradient(ellipse 185px 175px at 76% 82%, rgba(95, 74, 46, 0.14) 0px, rgba(95, 74, 46, 0) 100%),
+    radial-gradient(ellipse 160px 150px at 58% 28%, rgba(108, 84, 52, 0.11) 0px, rgba(108, 84, 52, 0) 100%),
+    radial-gradient(ellipse 145px 140px at 88% 64%, rgba(115, 90, 56, 0.10) 0px, rgba(115, 90, 56, 0) 100%),
+    radial-gradient(ellipse 155px 135px at 8% 42%, rgba(103, 80, 50, 0.12) 0px, rgba(103, 80, 50, 0) 100%);
+  mix-blend-mode: multiply;
+  opacity: 0.45;
   pointer-events: none;
 }
 
