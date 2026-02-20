@@ -50,6 +50,84 @@ npm run dev
 
 Visit `http://localhost:5173`
 
+### 3.5 Database Tables for Admin Book Tools
+
+Run this SQL in Supabase SQL Editor:
+
+```sql
+create table if not exists public.books (
+   id uuid primary key default gen_random_uuid(),
+   title text not null,
+   author text not null,
+   cover_image_url text,
+   created_at timestamptz not null default now()
+);
+
+alter table public.books
+add column if not exists cover_image_url text;
+
+create table if not exists public.chapters (
+   id uuid primary key default gen_random_uuid(),
+   book_id uuid not null references public.books(id) on delete cascade,
+   title text not null,
+   body text not null,
+   created_at timestamptz not null default now()
+);
+
+alter table public.books enable row level security;
+alter table public.chapters enable row level security;
+
+create policy "admin can insert books"
+on public.books
+for insert
+to authenticated
+with check (auth.jwt() ->> 'email' = 'admin@candlekeep.sc');
+
+create policy "admin can update books"
+on public.books
+for update
+to authenticated
+using (auth.jwt() ->> 'email' = 'admin@candlekeep.sc')
+with check (auth.jwt() ->> 'email' = 'admin@candlekeep.sc');
+
+create policy "admin can delete books"
+on public.books
+for delete
+to authenticated
+using (auth.jwt() ->> 'email' = 'admin@candlekeep.sc');
+
+create policy "admin can insert chapters"
+on public.chapters
+for insert
+to authenticated
+with check (auth.jwt() ->> 'email' = 'admin@candlekeep.sc');
+
+create policy "admin can update chapters"
+on public.chapters
+for update
+to authenticated
+using (auth.jwt() ->> 'email' = 'admin@candlekeep.sc')
+with check (auth.jwt() ->> 'email' = 'admin@candlekeep.sc');
+
+create policy "admin can delete chapters"
+on public.chapters
+for delete
+to authenticated
+using (auth.jwt() ->> 'email' = 'admin@candlekeep.sc');
+
+create policy "authenticated can read books"
+on public.books
+for select
+to authenticated
+using (true);
+
+create policy "authenticated can read chapters"
+on public.chapters
+for select
+to authenticated
+using (true);
+```
+
 ### 4. Build for Production
 
 ```bash

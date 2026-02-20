@@ -1,0 +1,194 @@
+.admin-dashboard {
+  display: grid;
+  gap: 1rem;
+  padding-bottom: 6rem;
+}
+
+.admin-intro {
+  margin-top: -8px;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+.admin-card {
+  background: var(--candlekeep-surface);
+  border: 1px solid var(--candlekeep-surface-light);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.admin-card h2 {
+  margin: 0 0 0.75rem 0;
+  color: var(--candlekeep-text);
+  font-family: 'Cinzel', 'Georgia', serif;
+}
+
+.admin-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.admin-section-head h2 {
+  margin-bottom: 0;
+}
+
+.admin-form {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.admin-form label {
+  font-size: 0.85rem;
+  color: var(--candlekeep-text-dim);
+}
+
+.admin-form input,
+.admin-form select,
+.admin-form textarea {
+  width: 100%;
+  border: 1px solid var(--candlekeep-surface-light);
+  border-radius: 6px;
+  background: var(--candlekeep-bg-dark);
+  color: var(--candlekeep-text);
+  padding: 0.55rem 0.65rem;
+  font: inherit;
+}
+
+.admin-form textarea {
+  resize: vertical;
+}
+
+.admin-form input:focus,
+.admin-form select:focus,
+.admin-form textarea:focus {
+  outline: 2px solid var(--candlekeep-accent-dark);
+  outline-offset: 1px;
+}
+
+.admin-form button {
+  margin-top: 0.3rem;
+  border: 1px solid var(--candlekeep-accent);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--candlekeep-accent-light);
+  padding: 0.55rem 0.75rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.admin-form button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.admin-status {
+  margin: 0.7rem 0 0;
+  font-size: 0.9rem;
+  color: var(--candlekeep-text-dim);
+  word-break: break-word;
+}
+
+.admin-manage-note {
+  margin-top: 0.85rem;
+}
+
+.admin-manage-note strong {
+  color: var(--candlekeep-text);
+}
+
+.admin-query-meta {
+  margin-top: 0.8rem;
+  font-size: 0.82rem;
+}
+
+.admin-list {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.85rem;
+}
+
+.admin-list-item {
+  border: 1px solid var(--candlekeep-surface-light);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.16);
+  padding: 0.65rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.admin-list-item.is-active {
+  border-color: var(--candlekeep-accent);
+}
+
+.admin-list-copy {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.admin-list-copy strong {
+  color: var(--candlekeep-text);
+}
+
+.admin-list-copy span {
+  color: var(--candlekeep-text-dim);
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+}
+
+.admin-inline-form {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.admin-inline-form input,
+.admin-inline-form textarea {
+  width: 100%;
+  border: 1px solid var(--candlekeep-surface-light);
+  border-radius: 6px;
+  background: var(--candlekeep-bg-dark);
+  color: var(--candlekeep-text);
+  padding: 0.5rem 0.62rem;
+  font: inherit;
+}
+
+.admin-inline-form textarea {
+  resize: vertical;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.admin-action-btn {
+  border: 1px solid var(--candlekeep-accent);
+  border-radius: 6px;
+  background: rgba(207, 77, 87, 0.12);
+  color: var(--candlekeep-text);
+  padding: 0.35rem 0.58rem;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.admin-action-btn.is-muted {
+  border-color: var(--candlekeep-surface-light);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.admin-action-btn.is-danger {
+  border-color: var(--candlekeep-accent-dark);
+  background: rgba(145, 38, 51, 0.28);
+}
+
+.admin-action-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}

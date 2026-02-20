@@ -1,14 +1,15 @@
-/* Candlekeep Theme - Dark & Imposing */
+/* Main App Theme - Stone Plate + Crest Red */
 :root {
-  --candlekeep-bg-dark: #0d0d0d;
-  --candlekeep-bg: #1a1410;
-  --candlekeep-surface: #2c2520;
-  --candlekeep-surface-light: #3d2817;
-  --candlekeep-accent: #d4a574;
-  --candlekeep-accent-light: #e8d5b7;
-  --candlekeep-accent-dark: #c9a86a;
+  --candlekeep-bg-dark: #12070c;
+  --candlekeep-bg: #1a0a10;
+  --candlekeep-surface: #242129;
+  --candlekeep-surface-light: #3b3742;
+  --candlekeep-accent: #b53a47;
+  --candlekeep-accent-light: #cf4d57;
+  --candlekeep-accent-dark: #912633;
   --candlekeep-text: #e8d5b7;
-  --candlekeep-text-dim: #a08060;
+  --candlekeep-text-dim: #c7af8c;
+  --candlekeep-line: rgba(215, 150, 126, 0.58);
 }
 
 * {
@@ -39,10 +40,10 @@ body {
   font-family: 'Cinzel', 'Georgia', serif;
   margin: 0 0 24px 0;
   font-size: clamp(28px, 5vw, 36px);
-  color: var(--candlekeep-accent);
+  color: var(--candlekeep-text);
   letter-spacing: 1px;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-  border-bottom: 2px solid var(--candlekeep-surface-light);
+  border-bottom: 2px solid var(--candlekeep-line);
   padding-bottom: 16px;
 }
 
@@ -58,6 +59,6 @@ body {
   justify-content: center;
   min-height: 100vh;
   font-size: 18px;
-  color: #666;
+  color: var(--candlekeep-text-dim);
 }
 

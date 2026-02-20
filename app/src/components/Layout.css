@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background: #1a1410;
+  background: var(--candlekeep-bg);
   position: relative;
 }
 
@@ -12,8 +12,8 @@
   position: fixed;
   inset: 0;
   background: 
-    radial-gradient(circle at 10% 20%, rgba(255, 140, 0, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 90% 80%, rgba(212, 165, 116, 0.02) 0%, transparent 50%);
+    radial-gradient(circle at 10% 20%, rgba(207, 77, 87, 0.06) 0%, transparent 52%),
+    radial-gradient(circle at 90% 80%, rgba(181, 58, 71, 0.04) 0%, transparent 54%);
   pointer-events: none;
   z-index: 1;
   animation: ambient-flicker 5s ease-in-out infinite;
@@ -27,7 +27,7 @@
 }
 
 .app-header {
-  background: linear-gradient(180deg, #2c1810 0%, #1f1410 100%);
+  background: linear-gradient(180deg, #3a3a40 0%, #0d0d10 100%);
   padding: 0.75rem 1.5rem;
   display: flex;
   align-items: center;
@@ -35,18 +35,18 @@
   box-shadow: 
     0 2px 8px rgba(0, 0, 0, 0.5),
     0 4px 20px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(212, 165, 116, 0.1);
+    inset 0 1px 0 rgba(239, 230, 223, 0.06);
   z-index: 100;
   position: relative;
-  border-bottom: 1px solid rgba(212, 165, 116, 0.2);
+  border-bottom: 1px solid rgba(207, 77, 87, 0.42);
 }
 
 .app-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #d4a574;
+  color: var(--candlekeep-accent-light);
   text-shadow: 
-    0 0 10px rgba(255, 140, 0, 0.3),
+    0 0 10px rgba(207, 77, 87, 0.35),
     0 2px 4px rgba(0, 0, 0, 0.8);
   font-family: 'Cinzel', 'Georgia', serif;
   letter-spacing: 1px;
@@ -59,14 +59,14 @@
 }
 
 .user-email {
-  color: #e8d5b7;
+  color: var(--candlekeep-text);
   font-size: 0.9rem;
 }
 
 .sign-out-btn {
   background: transparent;
-  border: 1px solid #d4a574;
-  color: #d4a574;
+  border: 1px solid var(--candlekeep-accent);
+  color: var(--candlekeep-accent-light);
   padding: 0.4rem 0.7rem;
   border-radius: 4px;
   cursor: pointer;
@@ -76,19 +76,19 @@
 }
 
 .sign-out-btn:hover {
-  background: #d4a574;
-  color: #2c1810;
+  background: var(--candlekeep-accent);
+  color: var(--candlekeep-text);
 }
 
 .sign-out-btn:focus-visible {
-  outline: 2px solid #d4a574;
+  outline: 2px solid var(--candlekeep-accent-light);
   outline-offset: 2px;
 }
 
 .app-main {
   flex: 1;
   overflow-y: auto;
-  background: #1a1410;
+  background: var(--candlekeep-bg);
   padding-bottom: 80px; /* Space for bottom nav */
 }
 
@@ -97,16 +97,16 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(0deg, #2c1810 0%, #1f1410 100%);
+  background: linear-gradient(0deg, #34343a 0%, #0b0b0e 100%);
   display: flex;
   justify-content: space-around;
   padding: 0.5rem 0;
   box-shadow: 
     0 -2px 8px rgba(0, 0, 0, 0.5),
     0 -4px 20px rgba(0, 0, 0, 0.3),
-    inset 0 -1px 0 rgba(212, 165, 116, 0.1);
+    inset 0 -1px 0 rgba(239, 230, 223, 0.06);
   z-index: 100;
-  border-top: 1px solid rgba(212, 165, 116, 0.2);
+  border-top: 1px solid rgba(207, 77, 87, 0.42);
 }
 
 .nav-item {
@@ -117,37 +117,37 @@
   padding: 0.5rem 1rem;
   min-width: 60px;
   text-decoration: none;
-  color: #a08060;
+  color: var(--candlekeep-text-dim);
   transition: all 0.2s;
   border-radius: 8px;
 }
 
 .nav-item:hover {
-  color: #d4a574;
-  background: rgba(255, 255, 255, 0.05);
+  color: var(--candlekeep-accent-light);
+  background: rgba(207, 77, 87, 0.14);
 }
 
 .nav-item.active {
-  color: #d4a574;
-  text-shadow: 0 0 8px rgba(255, 140, 0, 0.5);
+  color: var(--candlekeep-accent-light);
+  text-shadow: 0 0 8px rgba(207, 77, 87, 0.5);
 }
 
 .nav-item:focus-visible {
-  outline: 2px solid rgba(212, 165, 116, 0.85);
+  outline: 2px solid rgba(207, 77, 87, 0.85);
   outline-offset: 2px;
 }
 
 .nav-item.active .nav-icon {
-  filter: drop-shadow(0 0 8px rgba(255, 140, 0, 0.6));
+  filter: drop-shadow(0 0 8px rgba(207, 77, 87, 0.7));
   animation: icon-pulse 2s ease-in-out infinite;
 }
 
 @keyframes icon-pulse {
   0%, 100% {
-    filter: drop-shadow(0 0 8px rgba(255, 140, 0, 0.6));
+    filter: drop-shadow(0 0 8px rgba(207, 77, 87, 0.7));
   }
   50% {
-    filter: drop-shadow(0 0 12px rgba(255, 140, 0, 0.8));
+    filter: drop-shadow(0 0 12px rgba(207, 77, 87, 0.9));
   }
 }
 
