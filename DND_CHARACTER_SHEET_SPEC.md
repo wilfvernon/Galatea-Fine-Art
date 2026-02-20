@@ -1,34 +1,22 @@
-# D&D Character Sheet Feature Specifications
+# DND CHARACTER SHEET SPEC
+
+This document outlines the specifications for the DND character sheet, referencing the open source D&D 5e API for spells, items, and rules content.
 
 ## Overview
-This document outlines the specifications for the D&D Character Sheet feature, which includes integration with D&D Beyond, database design, data sourcing strategy, and synchronization behavior.
+- The DND character sheet will utilize the D&D 5e API available at [d&d5eapi.co](https://dnd5eapi.co).
 
-## D&D Beyond Integration
-- **Authentication**: Users must authenticate with their D&D Beyond accounts to sync character sheets.
-- **Data Retrieval**: Pull character data from the D&D Beyond API, including character name, class, race, background, stats, and items.
-- **Data Mapping**: Define how the API data maps to our internal data models for the character sheets.
+## Spells
+- All spell data will be fetched from the D&D 5e API.
+- API Endpoint: `/spells`
 
-## Database Design
-- **Character Table**: A table to store character information with relevant fields such as:
-  - `character_id`: Primary Key
-  - `user_id`: Foreign Key linked to users
-  - `name`: Character name
-  - `class`: Character class (e.g., Fighter, Wizard)
-  - `race`: Character race (e.g., Human, Elf)
-  - `background`: Background details
-  - `stats`: JSON field storing statistics and abilities
-  - `items`: JSON field to store items and equipment
+## Items
+- Item information such as weapons, armor, and other equipment will be retrieved using the D&D 5e API.
+- API Endpoint: `/items`
 
-- **User Table**: A table to manage user information and preferences.
+## Rules Content
+- The rules content needed for character abilities, combat rules, etc., will be sourced from the D&D 5e API.
+- API Endpoint: `/rules`
 
-## Data Sourcing Strategy
-- **Initial Load**: On initial login, fetch all character data from D&D Beyond using the API.
-- **Periodic Updates**: Implement a scheduled job to update characters regularly (e.g., every 24 hours) to fetch any changes from D&D Beyond.
-
-## Sync Behavior
-- **Real-Time Sync**: Changes made by the user in the application should sync with D&D Beyond immediately through their API.
-- **Conflict Resolution**: Define rules for resolving conflicts when a character is modified in both the app and D&D Beyond between syncs. For example, most recent change wins.
-- **Offline Mode**: Allow users to make changes offline with a local storage option, which syncs once they are back online.
-
-## Conclusion
-This document serves as a foundational specification for implementing the D&D Character Sheet feature. It will evolve as we gather more user feedback and requirements.
+## Usage
+- Ensure all API calls are properly authenticated and handled to retrieve accurate and efficient data in the character sheet.
+- Please refer to the [D&D 5e API documentation](https://dnd5eapi.co/docs/) for further details on data structures and additional endpoints.
