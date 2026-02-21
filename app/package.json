@@ -9,7 +9,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test:e2e": "playwright test",
-    "test:e2e:headed": "playwright test --headed"
+    "test:e2e:headed": "playwright test --headed",
+    "test:transform": "node src/lib/testTransform.js",
+    "insert:corinn": "node src/lib/insertCharacter.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.97.0",

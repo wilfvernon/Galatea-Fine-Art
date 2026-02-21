@@ -1,10 +1,41 @@
 import { useCallback, useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
+import SpellManagement from '../components/SpellManagement';
+import MagicItemManagement from '../components/MagicItemManagement';
+import FeatManagement from '../components/FeatManagement';
+import CharacterImporter from '../components/CharacterImporter';
 import './AdminDashboard.css';
 
 const sortBooks = (items) => [...items].sort((left, right) => left.title.localeCompare(right.title));
 
 function AdminDashboard() {
+  const [mainTab, setMainTab] = useState('books'); // 'books' or 'dnd'
+  const [dndTab, setDndTab] = useState('spells'); // 'spells', 'items', 'feats', 'characters'
+
+  const [spellPrefill, setSpellPrefill] = useState(null);
+  const [itemPrefill, setItemPrefill] = useState(null);
+  const [featPrefill, setFeatPrefill] = useState(null);
+  const [reviewPending, setReviewPending] = useState(false);
+  const [reviewOpenNonce, setReviewOpenNonce] = useState(0);
+
+  const handlePrefill = (type, data) => {
+    const payload = data ? { ...data, _nonce: Date.now() } : null;
+    if (type === 'spells') setSpellPrefill(payload);
+    if (type === 'items') setItemPrefill(payload);
+    if (type === 'feats') setFeatPrefill(payload);
+  };
+
+  const handleNavigateTab = (type) => {
+    setMainTab('dnd');
+    setDndTab(type);
+  };
+
+  const handleReviewReturn = () => {
+    setMainTab('dnd');
+    setDndTab('characters');
+    setReviewOpenNonce((prev) => prev + 1);
+  };
+  
   const [books, setBooks] = useState([]);
   const [chapters, setChapters] = useState([]);
   const [booksLoading, setBooksLoading] = useState(true);
@@ -306,11 +337,55 @@ function AdminDashboard() {
   return (
     <div className="page-container admin-dashboard">
       <h1>Admin Dashboard</h1>
-      <p className="admin-intro">Create, edit, and delete books and chapters directly in Supabase.</p>
+      <p className="admin-intro">Manage books, chapters, and D&D content.</p>
 
-      <div className="admin-grid">
-        <section className="admin-card" aria-labelledby="admin-books-title">
-          <h2 id="admin-books-title">Books</h2>
+      {/* Main Tabs */}
+      <div style={{ 
+        display: 'flex', 
+        gap: '10px', 
+        marginBottom: '20px',
+        borderBottom: '2px solid #ccc'
+      }}>
+        <button
+          onClick={() => setMainTab('books')}
+          style={{
+            padding: '12px 24px',
+            background: mainTab === 'books' ? '#4CAF50' : 'transparent',
+            color: mainTab === 'books' ? 'white' : '#333',
+            border: 'none',
+            borderBottom: mainTab === 'books' ? '3px solid #4CAF50' : 'none',
+            cursor: 'pointer',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            marginBottom: '-2px'
+          }}
+        >
+          📚 Books & Chapters
+        </button>
+        
+        <button
+          onClick={() => setMainTab('dnd')}
+          style={{
+            padding: '12px 24px',
+            background: mainTab === 'dnd' ? '#4CAF50' : 'transparent',
+            color: mainTab === 'dnd' ? 'white' : '#333',
+            border: 'none',
+            borderBottom: mainTab === 'dnd' ? '3px solid #4CAF50' : 'none',
+            cursor: 'pointer',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            marginBottom: '-2px'
+          }}
+        >
+          🎲 D&D Content
+        </button>
+      </div>
+
+      {/* Books & Chapters View */}
+      {mainTab === 'books' && (
+        <div className="admin-grid">
+          <section className="admin-card" aria-labelledby="admin-books-title">
+            <h2 id="admin-books-title">Books</h2>
           <form className="admin-form" onSubmit={handleAddBook}>
             <label htmlFor="book-title">Title</label>
             <input
@@ -594,6 +669,143 @@ function AdminDashboard() {
           {chapterDiagnostics && <p className="admin-status">{chapterDiagnostics}</p>}
         </section>
       </div>
+      )}
+
+      {/* D&D Content View */}
+      {mainTab === 'dnd' && (
+        <div>
+          {reviewPending && (
+            <div style={{
+              padding: '12px 16px',
+              background: '#fff3cd',
+              color: '#856404',
+              border: '1px solid #ffeaa7',
+              borderRadius: '6px',
+              marginBottom: '16px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between'
+            }}>
+              <span>Reference data review is pending.</span>
+              <button
+                type="button"
+                onClick={handleReviewReturn}
+                style={{
+                  padding: '6px 12px',
+                  background: '#f39c12',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '4px',
+                  cursor: 'pointer'
+                }}
+              >
+                Return to review
+              </button>
+            </div>
+          )}
+          {/* D&D Sub-Tabs */}
+          <div style={{ 
+            display: 'flex', 
+            gap: '10px', 
+            marginBottom: '20px',
+            borderBottom: '1px solid #ddd'
+          }}>
+            <button
+              onClick={() => setDndTab('spells')}
+              style={{
+                padding: '10px 20px',
+                background: dndTab === 'spells' ? '#2196F3' : 'transparent',
+                color: dndTab === 'spells' ? 'white' : '#666',
+                border: 'none',
+                borderBottom: dndTab === 'spells' ? '2px solid #2196F3' : 'none',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: dndTab === 'spells' ? 'bold' : 'normal'
+              }}
+            >
+              📜 Spells
+            </button>
+            
+            <button
+              onClick={() => setDndTab('items')}
+              style={{
+                padding: '10px 20px',
+                background: dndTab === 'items' ? '#2196F3' : 'transparent',
+                color: dndTab === 'items' ? 'white' : '#666',
+                border: 'none',
+                borderBottom: dndTab === 'items' ? '2px solid #2196F3' : 'none',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: dndTab === 'items' ? 'bold' : 'normal'
+              }}
+            >
+              ⚔️ Magic Items
+            </button>
+            
+            <button
+              onClick={() => setDndTab('feats')}
+              style={{
+                padding: '10px 20px',
+                background: dndTab === 'feats' ? '#2196F3' : 'transparent',
+                color: dndTab === 'feats' ? 'white' : '#666',
+                border: 'none',
+                borderBottom: dndTab === 'feats' ? '2px solid #2196F3' : 'none',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: dndTab === 'feats' ? 'bold' : 'normal'
+              }}
+            >
+              🎯 Feats
+            </button>
+
+            <button
+              onClick={() => setDndTab('characters')}
+              style={{
+                padding: '10px 20px',
+                background: dndTab === 'characters' ? '#2196F3' : 'transparent',
+                color: dndTab === 'characters' ? 'white' : '#666',
+                border: 'none',
+                borderBottom: dndTab === 'characters' ? '2px solid #2196F3' : 'none',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: dndTab === 'characters' ? 'bold' : 'normal'
+              }}
+            >
+              👤 Characters
+            </button>
+          </div>
+
+          {/* D&D Content Based on Sub-Tab */}
+          <div className="admin-card">
+            {dndTab === 'spells' && (
+              <SpellManagement
+                prefill={spellPrefill}
+                onPrefillConsumed={() => setSpellPrefill(null)}
+              />
+            )}
+            {dndTab === 'items' && (
+              <MagicItemManagement
+                prefill={itemPrefill}
+                onPrefillConsumed={() => setItemPrefill(null)}
+              />
+            )}
+            {dndTab === 'feats' && (
+              <FeatManagement
+                prefill={featPrefill}
+                onPrefillConsumed={() => setFeatPrefill(null)}
+              />
+            )}
+            <div style={{ display: dndTab === 'characters' ? 'block' : 'none' }}>
+              <CharacterImporter
+                onNavigateTab={handleNavigateTab}
+                onPrefill={handlePrefill}
+                onReviewPendingChange={setReviewPending}
+                reviewOpenNonce={reviewOpenNonce}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
